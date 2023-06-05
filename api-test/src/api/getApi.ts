@@ -1,13 +1,14 @@
-import {APIResponse, request} from "@playwright/test";
+import {APIResponse} from "@playwright/test";
+import {get} from "./apiExecutor";
+import ENV from "../utils/env";
+
 
 /**
  * GET /posts
  * @return APIResponse
  */
 export async function getUserPosts() {
-    const apiContext = await request.newContext()
-
-    return await apiContext.get('/posts')
+    return await get(ENV.BASE_URL + '/posts');
 }
 
 /**
@@ -15,8 +16,6 @@ export async function getUserPosts() {
  * @param id Post ID
  * @return APIResponse
  */
-export async function getUserPost(id : number) {
-    const apiContext = await request.newContext()
-
-    return await apiContext.get('/posts/' + id )
+export async function getUserPost(id: number) {
+    return await get(ENV.BASE_URL + '/posts/' + id);
 }
