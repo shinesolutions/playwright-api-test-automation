@@ -1,6 +1,12 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "decorators",
+      "dom",
+      "es5",
+      "scripthost"
+    ]
   }
 }

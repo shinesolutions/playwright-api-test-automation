@@ -1,11 +1,11 @@
-import {test, expect} from "@playwright/test"
-import {getUserPost, getUserPosts} from "../api/getApi"
+import {test, expect} from "@playwright/test";
+import getApi from "../api/getApi";
 
 test.describe("Retrieve user posts", () => {
 
         test("Get user posts", async () => {
 
-            const response = await getUserPosts();
+            const response = await getApi.getUserPosts();
 
             expect(response.ok()).toBeTruthy();
             expect(response.status()).toBe(200);
@@ -13,7 +13,7 @@ test.describe("Retrieve user posts", () => {
         })
 
         test("Get user post ", async () => {
-            const response = await getUserPost(1);
+            const response = await getApi.getUserPost(1);
 
             expect(response.ok()).toBeTruthy();
             expect(response.status()).toBe(200);

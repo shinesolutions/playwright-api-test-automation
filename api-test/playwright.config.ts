@@ -3,10 +3,10 @@ const config = {
     // Run all tests in parallel.
     fullyParallel: true,
     use: {
-        trace: 'off',
-        extraHTTPHeaders: {
-            'Content-type': 'application/json; charset=UTF-8'
-        }
+        trace: 'off'
+        // extraHTTPHeaders: {
+        //     'Content-type': 'application/json; charset=UTF-8'
+        // }
     },
     globalSetup: "src/utils/globalSetup.ts",
     reporter: [

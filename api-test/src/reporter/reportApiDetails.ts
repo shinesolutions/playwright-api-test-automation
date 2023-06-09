@@ -1,6 +1,6 @@
 import {APIResponse} from "@playwright/test";
 
-export async function traceApiCalls(method: String, url: String, body: String, response: APIResponse, headers?: { [key: string]: string; }) {
+export async function traceApiCalls(method: String, url: String, requestBody: String, response: APIResponse, headers?: { [key: string]: string; }) {
 
     const trace = process.env.TRACE_API_CALLS.toLowerCase();
 
@@ -8,14 +8,33 @@ export async function traceApiCalls(method: String, url: String, body: String, r
 
         const name = method + ": " + url;
 
-        await console.log("\n ================================ \n"
-            + name,
-            "\n REQUEST: \n" + body
-            + "\n\n HEADERS: \n" + headers
-            + "\n\n RESPONSE: \n" + await response.text()
-            + "\n ================================ \n"
-        );
+        const requestHeaders = await getHeadersString(headers);
+
+        const requestDetails = `REQUEST HEADER(s): \n${requestHeaders} \nREQUEST BODY: \n${requestBody}`;
+
+        const responseHeaders = await getHeadersString(response.headers());
+
+        const responseBody = await response.text();
+
+        const responseDetails = `RESPONSE STATUS: ${response.status()} \n\nRESPONSE HEADER(s): \n${responseHeaders} \nRESPONSE BODY: \n${responseBody}`;
+
+        await console.log(`\n ================================ \n${name} \n\n${requestDetails} \n\n\n${responseDetails} \n ================================ \n`);
 
     }
 
+}
+
+export async function getHeadersString(headers: { [key: string]: string; }) {
+
+    let headersString = "";
+
+    for (const key in headers) {
+        if (headers.hasOwnProperty(key)) {
+            const value = headers[key];
+            headersString = headersString + `${key}: ${value}\n` ;
+
+        }
+    }
+
+    return headersString;
 }
