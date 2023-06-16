@@ -1,6 +1,6 @@
 import {APIResponse} from "@playwright/test";
 
-export async function traceApiCalls(method: String, url: String, requestBody: String, response: APIResponse, headers?: { [key: string]: string; }) {
+export async function traceApiCalls(method: string, url: string, requestBody: string, response: APIResponse, headers?: { [key: string]: string; }) {
 
     const trace = process.env.TRACE_API_CALLS.toLowerCase();
 
@@ -29,10 +29,9 @@ export async function getHeadersString(headers: { [key: string]: string; }) {
     let headersString = "";
 
     for (const key in headers) {
-        if (headers.hasOwnProperty(key)) {
+        if (Object.hasOwnProperty.call(headers, key)) {
             const value = headers[key];
             headersString = headersString + `${key}: ${value}\n` ;
-
         }
     }
 

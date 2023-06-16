@@ -16,7 +16,7 @@ class ApiManager {
       * @param body: body of the request
       * @return APIResponse
       */
-     async get(url: String, headers?: { [key: string]: string; }, body?: String) {
+     async get(url: string, headers?: { [key: string]: string; }, body?: string) {
           return this.send("GET", url, headers, body);
      }
 
@@ -27,7 +27,7 @@ class ApiManager {
       * @param body: body of the request
       * @return APIResponse
       */
-     async post(url: String, headers?: { [key: string]: string; }, body?: String) {
+     async post(url: string, headers?: { [key: string]: string; }, body?: string) {
           return this.send("POST", url, headers, body);
      }
 
@@ -38,7 +38,7 @@ class ApiManager {
       * @param body: body of the request
       * @return APIResponse
       */
-     async put(url: String, headers?: { [key: string]: string; }, body?: String) {
+     async put(url: string, headers?: { [key: string]: string; }, body?: string) {
           return this.send("PUT", url, headers, body);
      }
 
@@ -49,7 +49,7 @@ class ApiManager {
       * @param body: body of the request
       * @return APIResponse
       */
-     async patch(url: String, headers?: { [key: string]: string; }, body?: String) {
+     async patch(url: string, headers?: { [key: string]: string; }, body?: string) {
           return this.send("PATCH", url, headers, body);
      }
 
@@ -60,7 +60,7 @@ class ApiManager {
       * @param body: body of the request
       * @return APIResponse
       */
-     async delete(url: String, headers?: { [key: string]: string; }, body?: String) {
+     async delete(url: string, headers?: { [key: string]: string; }, body?: string) {
           return this.send("DELETE", url, headers, body);
      }
 
@@ -72,7 +72,7 @@ class ApiManager {
       * @param requestBody: body of the request
       * @return APIResponse
       */
-     async send(method: String, url: String, headers?: { [key: string]: string; }, requestBody?: String) {
+     async send(method: string, url: string, headers?: { [key: string]: string; }, requestBody?: string) {
 
           const finalRequestHeaders = { ...this.apiDefaultHeaders, ...headers} //TODO: Check if headers is correct and print
 
